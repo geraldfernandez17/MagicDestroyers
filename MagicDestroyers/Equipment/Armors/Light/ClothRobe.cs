@@ -13,5 +13,20 @@ namespace MagicDestroyers.Equipment.Armors.Light
         {
 
         }
+
+        public int ArmorPoints
+        {
+            get
+            {
+                return armorPoints;
+            }
+            set
+            {
+                if (value >= 1)
+                    armorPoints = value;
+                else
+                    throw new ArgumentOutOfRangeException(string.Empty, "Armor Points must be greater or equal to 1.");
+            }
+        }
     }
 }
