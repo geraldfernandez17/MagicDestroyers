@@ -1,10 +1,6 @@
 ﻿using MagicDestroyers.Equipment.Armors.Light;
 using MagicDestroyers.Equipment.Weapons.Blunt;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicDestroyers.Characters.Spellcasters
 {
@@ -20,22 +16,38 @@ namespace MagicDestroyers.Characters.Spellcasters
         private ClothRobe bodyArmor;
         private Staff weapon;
 
-
         public Mage()
+            : this("Zeus", 11)
         {
 
+        }
+
+        public Mage(string name, int level)
+            : this(name, level, 1300)
+        {
+        }
+
+        public Mage(string name, int level, int healthPoints)
+        {
+            this.Name = name;
+            this.Level = level;
+            this.HealthPoints = healthPoints;
+            this.Faction = "Spellcasters";
+            this.AbilityPoints = 135;
+            this.Weapon = new Staff();
+            this.BodyArmor = new ClothRobe();
         }
 
         public int AbilityPoints
         {
             get
             {
-                return abilityPoints;
+                return this.abilityPoints;
             }
             set
             {
                 if (value >= 0)
-                    abilityPoints = value;
+                    this.abilityPoints = value;
                 else
                     throw new ArgumentOutOfRangeException(string.Empty, "Ability Points must be positive value.");
             }
@@ -45,12 +57,12 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return healthPoints;
+                return this.healthPoints;
             }
             set
             {
                 if (value >= 0)
-                    healthPoints = value;
+                    this.healthPoints = value;
                 else
                     throw new ArgumentOutOfRangeException(string.Empty, "Health Points must be positive value.");
             }
@@ -60,12 +72,12 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return level;
+                return this.level;
             }
             set
             {
                 if (value >= 0)
-                    level = value;
+                    this.level = value;
                 else
                     throw new ArgumentOutOfRangeException(string.Empty, "Level must be positive value.");
             }
@@ -75,12 +87,12 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return faction;
+                return this.faction;
             }
             set
             {
                 if (value.Equals("Spellcasters"))
-                    faction = value;
+                    this.faction = value;
                 else
                     throw new ArgumentOutOfRangeException(string.Empty, "Faction must be Spellcasters for this Character.");
             }
@@ -90,11 +102,11 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return name;
+                return this.name;
             }
             set
             {
-                name = value;
+                this.name = value;
             }
         }
 
@@ -102,11 +114,11 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return bodyArmor;
+                return this.bodyArmor;
             }
             set
             {
-                bodyArmor = value;
+                this.bodyArmor = value;
             }
         }
 
@@ -114,11 +126,11 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return weapon;
+                return this.weapon;
             }
             set
             {
-                weapon = value;
+                this.weapon = value;
             }
         }
 

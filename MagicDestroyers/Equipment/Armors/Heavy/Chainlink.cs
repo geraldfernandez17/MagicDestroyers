@@ -14,16 +14,21 @@ namespace MagicDestroyers.Equipment.Armors.Heavy
 
         }
 
+        public Chainlink(int armorPoints)
+        {
+            this.ArmorPoints = armorPoints;
+        }
+
         public int ArmorPoints
         {
             get
             {
-                return armorPoints;
+                return this.armorPoints;
             }
             set
             {
                 if (value >= 1)
-                    armorPoints = value;
+                    this.armorPoints = value;
                 else
                     throw new ArgumentOutOfRangeException(string.Empty, "Armor Points must be greater or equal to 1.");
             }

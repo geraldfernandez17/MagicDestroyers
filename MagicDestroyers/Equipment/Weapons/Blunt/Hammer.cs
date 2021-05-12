@@ -15,16 +15,21 @@ namespace MagicDestroyers.Equipment.Weapons.Blunt
 
         }
 
+        public Hammer(int damage)
+        {
+            this.Damage = damage;
+        }
+
         public int Damage
         {
             get
             {
-                return damage;
+                return this.damage;
             }
             set
             {
                 if (value >= 1)
-                    damage = value;
+                    this.damage = value;
                 else
                     throw new ArgumentOutOfRangeException(string.Empty, "Damage must be greater or equal to 1.");
             }

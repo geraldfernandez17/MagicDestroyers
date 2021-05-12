@@ -1,10 +1,6 @@
 ﻿using MagicDestroyers.Equipment.Armors.Heavy;
 using MagicDestroyers.Equipment.Weapons.Sharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicDestroyers.Characters.Melee
 {
@@ -21,20 +17,37 @@ namespace MagicDestroyers.Characters.Melee
         private Axe weapon;
 
         public Warrior()
+            : this("Samurai", 12)
         {
 
+        }
+
+        public Warrior(string name, int level)
+            : this(name, level, 7000)
+        {
+        }
+
+        public Warrior(string name, int level, int healthPoints)
+        {
+            this.Name = name;
+            this.Level = level;
+            this.HealthPoints = healthPoints;
+            this.Faction = "Melee";
+            this.AbilityPoints = 80;
+            this.Weapon = new Axe();
+            this.BodyArmor = new Chainlink();
         }
 
         public int AbilityPoints
         {
             get
             {
-                return abilityPoints;
+                return this.abilityPoints;
             }
             set
             {
                 if (value >= 0)
-                    abilityPoints = value;
+                    this.abilityPoints = value;
                 else
                     throw new ArgumentOutOfRangeException(string.Empty, "Ability Points must be positive value.");
             }
@@ -44,12 +57,12 @@ namespace MagicDestroyers.Characters.Melee
         {
             get
             {
-                return healthPoints;
+                return this.healthPoints;
             }
             set
             {
                 if (value >= 0)
-                    healthPoints = value;
+                    this.healthPoints = value;
                 else
                     throw new ArgumentOutOfRangeException(string.Empty, "Health Points must be positive value.");
             }
@@ -59,12 +72,12 @@ namespace MagicDestroyers.Characters.Melee
         {
             get
             {
-                return level;
+                return this.level;
             }
             set
             {
                 if (value >= 0)
-                    level = value;
+                    this.level = value;
                 else
                     throw new ArgumentOutOfRangeException(string.Empty, "Level must be positive value.");
             }
@@ -74,12 +87,12 @@ namespace MagicDestroyers.Characters.Melee
         {
             get
             {
-                return faction;
+                return this.faction;
             }
             set
             {
                 if (value.Equals("Melee"))
-                    faction = value;
+                    this.faction = value;
                 else
                     throw new ArgumentOutOfRangeException(string.Empty, "Faction must be Melee for this Character.");
             }
@@ -89,11 +102,11 @@ namespace MagicDestroyers.Characters.Melee
         {
             get
             {
-                return name;
+                return this.name;
             }
             set
             {
-                name = value;
+                this.name = value;
             }
         }
 
@@ -101,11 +114,11 @@ namespace MagicDestroyers.Characters.Melee
         {
             get
             {
-                return bodyArmor;
+                return this.bodyArmor;
             }
             set
             {
-                bodyArmor = value;
+                this.bodyArmor = value;
             }
         }
 
@@ -113,11 +126,11 @@ namespace MagicDestroyers.Characters.Melee
         {
             get
             {
-                return weapon;
+                return this.weapon;
             }
             set
             {
-                weapon = value;
+                this.weapon = value;
             }
         }
 
