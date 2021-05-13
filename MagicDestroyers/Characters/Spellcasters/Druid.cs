@@ -1,4 +1,5 @@
-﻿using MagicDestroyers.Equipment.Armors.Leather;
+﻿using MagicDestroyers.Enums;
+using MagicDestroyers.Equipment.Armors.Leather;
 using MagicDestroyers.Equipment.Weapons.Blunt;
 using System;
 
@@ -6,24 +7,36 @@ namespace MagicDestroyers.Characters.Spellcasters
 {
     public class Druid
     {
+        private static int index_char = 1;
+
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_HEALTHPOINTS = 900;
+        private const int DEFAULT_ABILITYPOINTS = 120;
+
+        private const string DEFAULT_NAME = "Druid";
+        private const Faction DEFAULT_FACTION = Faction.Spellcasters;
+
+        private readonly LightLeatherVest DEFAULT_BODYARMOR = new LightLeatherVest();
+        private readonly Staff DEFAULT_WEAPON = new Staff();
+
         private int abilityPoints;
         private int healthPoints;
         private int level;
 
-        private string faction;
+        private Faction faction;
         private string name;
 
         private LightLeatherVest bodyArmor;
         private Staff weapon;
 
         public Druid()
-            : this("Furion", 10)
+            : this(DEFAULT_NAME + " " + index_char.ToString(), DEFAULT_LEVEL)
         {
 
         }
 
         public Druid(string name, int level)
-            : this(name, level, 1200)
+            : this(name, level, DEFAULT_HEALTHPOINTS)
         {
         }
 
@@ -32,10 +45,11 @@ namespace MagicDestroyers.Characters.Spellcasters
             this.Name = name;
             this.Level = level;
             this.HealthPoints = healthPoints;
-            this.Faction = "Spellcasters";
-            this.AbilityPoints = 110;
-            this.Weapon = new Staff();
-            this.BodyArmor = new LightLeatherVest();
+            this.Faction = DEFAULT_FACTION;
+            this.AbilityPoints = DEFAULT_ABILITYPOINTS;
+            this.Weapon = DEFAULT_WEAPON;
+            this.BodyArmor = DEFAULT_BODYARMOR;
+            index_char++;
         }
 
         public int AbilityPoints
@@ -83,7 +97,7 @@ namespace MagicDestroyers.Characters.Spellcasters
             }
         }
 
-        public string Faction
+        public Faction Faction
         {
             get
             {
@@ -91,10 +105,7 @@ namespace MagicDestroyers.Characters.Spellcasters
             }
             set
             {
-                if (value.Equals("Spellcasters"))
-                    this.faction = value;
-                else
-                    throw new ArgumentOutOfRangeException(string.Empty, "Faction must be Spellcasters for this Character.");
+                this.faction = value;
             }
         }
 

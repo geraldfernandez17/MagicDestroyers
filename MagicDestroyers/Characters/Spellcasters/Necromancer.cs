@@ -1,4 +1,5 @@
-﻿using MagicDestroyers.Equipment.Armors.Leather;
+﻿using MagicDestroyers.Enums;
+using MagicDestroyers.Equipment.Armors.Leather;
 using MagicDestroyers.Equipment.Weapons.Sharp;
 using System;
 
@@ -6,24 +7,36 @@ namespace MagicDestroyers.Characters.Spellcasters
 {
     public class Necromancer
     {
+        private static int index_char = 1;
+
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_HEALTHPOINTS = 900;
+        private const int DEFAULT_ABILITYPOINTS = 125;
+
+        private const string DEFAULT_NAME = "Necromancer";
+        private const Faction DEFAULT_FACTION = Faction.Spellcasters;
+
+        private readonly LightLeatherVest DEFAULT_BODYARMOR = new LightLeatherVest();
+        private readonly Sword DEFAULT_WEAPON = new Sword();
+
         private int abilityPoints;
         private int healthPoints;
         private int level;
 
-        private string faction;
+        private Faction faction;
         private string name;
 
         private LightLeatherVest bodyArmor;
         private Sword weapon;
 
         public Necromancer()
-            : this("Necromancer", 12)
+            : this(DEFAULT_NAME + " " + index_char.ToString(), DEFAULT_LEVEL)
         {
 
         }
 
         public Necromancer(string name, int level)
-            : this(name, level, 1100)
+            : this(name, level, DEFAULT_HEALTHPOINTS)
         {
         }
 
@@ -32,10 +45,11 @@ namespace MagicDestroyers.Characters.Spellcasters
             this.Name = name;
             this.Level = level;
             this.HealthPoints = healthPoints;
-            this.Faction = "Spellcasters";
-            this.AbilityPoints = 120;
-            this.Weapon = new Sword();
-            this.BodyArmor = new LightLeatherVest();
+            this.Faction = DEFAULT_FACTION;
+            this.AbilityPoints = DEFAULT_ABILITYPOINTS;
+            this.Weapon = DEFAULT_WEAPON;
+            this.BodyArmor = DEFAULT_BODYARMOR;
+            index_char++;
         }
 
         public int AbilityPoints
@@ -83,7 +97,7 @@ namespace MagicDestroyers.Characters.Spellcasters
             }
         }
 
-        public string Faction
+        public Faction Faction
         {
             get
             {
@@ -91,10 +105,7 @@ namespace MagicDestroyers.Characters.Spellcasters
             }
             set
             {
-                if (value.Equals("Spellcasters"))
-                    this.faction = value;
-                else
-                    throw new ArgumentOutOfRangeException(string.Empty, "Faction must be Spellcasters for this Character.");
+                this.faction = value;
             }
         }
 

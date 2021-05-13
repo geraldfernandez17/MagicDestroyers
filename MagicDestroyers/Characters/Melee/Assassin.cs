@@ -1,4 +1,5 @@
-﻿using MagicDestroyers.Equipment.Armors.Leather;
+﻿using MagicDestroyers.Enums;
+using MagicDestroyers.Equipment.Armors.Leather;
 using MagicDestroyers.Equipment.Weapons.Sharp;
 using System;
 
@@ -6,24 +7,35 @@ namespace MagicDestroyers.Characters.Melee
 {
     public class Assassin
     {
+        private static int index_char = 1;
+
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_HEALTHPOINTS = 1000;
+        private const int DEFAULT_ABILITYPOINTS = 100;
+
+        private const string DEFAULT_NAME = "Assassin";
+        private const Faction DEFAULT_FACTION = Faction.Melee;
+
+        private readonly LightLeatherVest DEFAULT_BODYARMOR = new LightLeatherVest();
+        private readonly Sword DEFAULT_WEAPON = new Sword();
+
         private int abilityPoints;
         private int healthPoints;
         private int level;
-
-        private string faction;
+        private Faction faction;
         private string name;
 
         private LightLeatherVest bodyArmor;
         private Sword weapon;
 
         public Assassin()
-            : this("Kapak Sakti", 10)
+            : this(DEFAULT_NAME + " " + index_char.ToString(), DEFAULT_LEVEL)
         {
 
         }
 
         public Assassin(string name, int level)
-            : this(name, level, 2000)
+            : this(name, level, DEFAULT_HEALTHPOINTS)
         {
         }
 
@@ -32,10 +44,11 @@ namespace MagicDestroyers.Characters.Melee
             this.Name = name;
             this.Level = level;
             this.HealthPoints = healthPoints;
-            this.Faction = "Melee";
-            this.AbilityPoints = 100;
-            this.Weapon = new Sword();
-            this.BodyArmor = new LightLeatherVest();
+            this.Faction = DEFAULT_FACTION;
+            this.AbilityPoints = DEFAULT_ABILITYPOINTS;
+            this.Weapon = DEFAULT_WEAPON;
+            this.BodyArmor = DEFAULT_BODYARMOR;
+            index_char++;
         }
 
         public int AbilityPoints
@@ -83,7 +96,7 @@ namespace MagicDestroyers.Characters.Melee
             }
         }
 
-        public string Faction
+        public Faction Faction
         {
             get
             {
@@ -91,10 +104,7 @@ namespace MagicDestroyers.Characters.Melee
             }
             set
             {
-                if (value.Equals("Melee"))
-                    this.faction = value;
-                else
-                    throw new ArgumentOutOfRangeException(string.Empty, "Faction must be Melee for this Character.");
+                this.faction = value;
             }
         }
 
