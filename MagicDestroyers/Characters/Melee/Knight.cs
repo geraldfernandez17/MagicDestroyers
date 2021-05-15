@@ -5,12 +5,12 @@ using System;
 
 namespace MagicDestroyers.Characters.Melee
 {
-    public class Knight
+    public class Knight : Melee
     {
         private static int index_char = 1;
 
         private const int DEFAULT_LEVEL = 1;
-        private const int DEFAULT_HEALTHPOINTS = 1200;
+        private const int DEFAULT_HEALTHPOINTS = 100;
         private const int DEFAULT_ABILITYPOINTS = 90;
 
         private const string DEFAULT_NAME = "Knight";
@@ -19,15 +19,23 @@ namespace MagicDestroyers.Characters.Melee
         private readonly Chainlink DEFAULT_BODYARMOR = new Chainlink();
         private readonly Hammer DEFAULT_WEAPON = new Hammer();
 
-        private int abilityPoints;
-        private int healthPoints;
-        private int level;
-
-        private Faction faction;
-        private string name;
-
         private Chainlink bodyArmor;
         private Hammer weapon;
+
+        public override int HealthPoints
+        {
+            get
+            {
+                return this.healthPoints;
+            }
+            set
+            {
+                if (value >= 0 && value <= 120)
+                    this.healthPoints = value;
+                else
+                    throw new ArgumentOutOfRangeException(string.Empty, "Knight Health Points must be positive value and the value must be between 0 untill 120.");
+            }
+        }
 
         public Knight()
             : this(DEFAULT_NAME + " " + index_char.ToString(), DEFAULT_LEVEL)
@@ -42,83 +50,14 @@ namespace MagicDestroyers.Characters.Melee
 
         public Knight(string name, int level, int healthPoints)
         {
-            this.Name = name;
-            this.Level = level;
-            this.HealthPoints = healthPoints;
-            this.Faction = DEFAULT_FACTION;
-            this.AbilityPoints = DEFAULT_ABILITYPOINTS;
+            base.Name = name;
+            base.Level = level;
+            base.HealthPoints = healthPoints;
+            base.Faction = DEFAULT_FACTION;
+            base.AbilityPoints = DEFAULT_ABILITYPOINTS;
             this.Weapon = DEFAULT_WEAPON;
             this.BodyArmor = DEFAULT_BODYARMOR;
             index_char++;
-        }
-
-        public int AbilityPoints
-        {
-            get
-            {
-                return this.abilityPoints;
-            }
-            set
-            {
-                if (value >= 0)
-                    this.abilityPoints = value;
-                else
-                    throw new ArgumentOutOfRangeException(string.Empty, "Ability Points must be positive value.");
-            }
-        }
-
-        public int HealthPoints
-        {
-            get
-            {
-                return this.healthPoints;
-            }
-            set
-            {
-                if (value >= 0)
-                    this.healthPoints = value;
-                else
-                    throw new ArgumentOutOfRangeException(string.Empty, "Health Points must be positive value.");
-            }
-        }
-
-        public int Level
-        {
-            get
-            {
-                return this.level;
-            }
-            set
-            {
-                if (value >= 0)
-                    this.level = value;
-                else
-                    throw new ArgumentOutOfRangeException(string.Empty, "Level must be positive value.");
-            }
-        }
-
-        public Faction Faction
-        {
-            get
-            {
-                return this.faction;
-            }
-            set
-            {
-                this.faction = value;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-            }
         }
 
         public Chainlink BodyArmor

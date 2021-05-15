@@ -2,12 +2,17 @@
 {
     public static class PlayersInfo
     {
-        private static string playersInfoDirectory = "";
-        private static string[,] fullInfo;
-        private static int[] scores;
-        private static int[] levels;
+        //private static string playersInfoDirectory = "";
+        //private static string[,] fullInfo;
+        //private static int[] scores;
+        //private static int[] levels;
 
         static PlayersInfo()
+        {
+
+        }
+
+        public static void Initialize()
         {
 
         }

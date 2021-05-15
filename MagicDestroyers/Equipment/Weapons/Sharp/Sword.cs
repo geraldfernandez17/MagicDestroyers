@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicDestroyers.Equipment.Weapons.Sharp
 {
-    public class Sword
+    public class Sword : Sharp
     {
-        private int damage;
-
         public Sword()
         {
 
@@ -17,22 +11,7 @@ namespace MagicDestroyers.Equipment.Weapons.Sharp
 
         public Sword(int damage)
         {
-            this.Damage = damage;
-        }
-
-        public int Damage
-        {
-            get
-            {
-                return this.damage;
-            }
-            set
-            {
-                if (value >= 1)
-                    this.damage = value;
-                else
-                    throw new ArgumentOutOfRangeException(string.Empty, "Damage must be greater or equal to 1.");
-            }
+            base.Damage = damage;
         }
 
         public void Bloodthirst()

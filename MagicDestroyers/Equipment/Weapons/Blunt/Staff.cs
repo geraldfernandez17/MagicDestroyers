@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace MagicDestroyers.Equipment.Weapons.Blunt
 {
-    public class Staff
+    public class Staff : Blunt
     {
-        private int damage;
-
         public Staff()
         {
 
@@ -17,22 +15,7 @@ namespace MagicDestroyers.Equipment.Weapons.Blunt
 
         public Staff(int damage)
         {
-            this.Damage = damage;
-        }
-
-        public int Damage
-        {
-            get
-            {
-                return this.damage;
-            }
-            set
-            {
-                if (value >= 1)
-                    this.damage = value;
-                else
-                    throw new ArgumentOutOfRangeException(string.Empty, "Damage must be greater or equal to 1.");
-            }
+            base.Damage = damage;
         }
 
         public void Empower()
