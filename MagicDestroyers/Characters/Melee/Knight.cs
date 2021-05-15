@@ -101,17 +101,17 @@ namespace MagicDestroyers.Characters.Melee
 
         public override void Attack()
         {
-            throw new NotImplementedException();
+            this.HolyBlow();
         }
 
         public override void Defend()
         {
-            throw new NotImplementedException();
+            this.RighteousWings();
         }
 
         public override void SpecialAttack()
         {
-            throw new NotImplementedException();
+            this.PurifySoul();
         }
     }
 }

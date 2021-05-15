@@ -86,17 +86,17 @@ namespace MagicDestroyers.Characters.Melee
 
         public override void Attack()
         {
-            throw new NotImplementedException();
+            this.Strike();
         }
 
         public override void Defend()
         {
-            throw new NotImplementedException();
+            this.SkinHarden();
         }
 
         public override void SpecialAttack()
         {
-            throw new NotImplementedException();
+            this.Execute();
         }
     }
 }
