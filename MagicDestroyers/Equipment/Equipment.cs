@@ -1,6 +1,6 @@
 ﻿namespace MagicDestroyers.Equipment
 {
-    public class Equipment
+    public abstract class Equipment
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace MagicDestroyers.Equipment.Armors
 {
-    public class Armor : Equipment
+    public abstract class Armor : Equipment
     {
         protected int armorPoints;
 

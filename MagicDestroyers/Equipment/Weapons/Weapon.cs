@@ -2,7 +2,7 @@
 
 namespace MagicDestroyers.Equipment.Weapons
 {
-    public class Weapon : Equipment
+    public abstract class Weapon : Equipment
     {
         protected int damage;
 

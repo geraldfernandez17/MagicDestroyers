@@ -2,7 +2,7 @@
 
 namespace MagicDestroyers.Characters.Spellcasters
 {
-    public class Spellcaster : Character
+    public abstract class Spellcaster : Character
     {
         protected int manaPoints;
         public int ManaPoints 

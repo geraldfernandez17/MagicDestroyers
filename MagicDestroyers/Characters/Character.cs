@@ -1,14 +1,40 @@
 ﻿using MagicDestroyers.Enums;
+using MagicDestroyers.Interfaces;
 using System;
 
 namespace MagicDestroyers.Characters
 {
-    public class Character
+    public abstract class Character : IAttack, IDefend
     {
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_HEALTHPOINTS = 100;
+        private const string DEFAULT_NAME = "Assassin";
+        private const Faction DEFAULT_FACTION = Faction.Melee;
+
         protected int healthPoints;
         protected int level;
         protected Faction faction;
         private string name;
+
+        public Character()
+            : this(DEFAULT_HEALTHPOINTS, DEFAULT_LEVEL)
+        {
+
+        }
+
+        public Character(int healthPoints, int level)
+            : this(healthPoints, level, DEFAULT_NAME)
+        {
+
+        }
+
+        public Character(int healthPoints, int level, string name)
+        {
+            this.healthPoints = healthPoints;
+            this.level = level;
+            this.faction = DEFAULT_FACTION;
+            this.name = name;
+        }
 
         public virtual int HealthPoints
         {
@@ -64,9 +90,10 @@ namespace MagicDestroyers.Characters
             }
         }
 
-        public Character()
-        {
+        public abstract void Attack();
 
-        }
+        public abstract void Defend();
+
+        public abstract void SpecialAttack();
     }
 }
